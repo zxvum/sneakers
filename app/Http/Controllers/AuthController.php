@@ -34,7 +34,7 @@ class AuthController extends Controller
         $user->assignRole('user');
         Auth::login($user);
 
-        return to_route('home')->with('auth', 'success');
+        return redirect()->intended();
     }
 
     public function login(Request $request)
@@ -42,12 +42,13 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'remember_me' => ['boolean']
         ]);
 
         if (!Auth::attempt($validatedData)) {
             return redirect()->back()->with(['message' => 'Неверный Email или Пароль от аккаунта']);
         }
 
-        return to_route('home')->with('auth', 'success');
+        return redirect()->intended();
     }
 }

@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin;
+use App\Http\Livewire\ProductsCreate;
+use App\Http\Livewire\ProductsEdit;
 use App\Http\Livewire\ProductsTable;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,10 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function(){
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'role:admin']], function() {
     Route::group(['prefix' => 'products', 'as' => 'products.'], function() {
         Route::get('/', ProductsTable::class)->name('table');
+        Route::get('/create', ProductsCreate::class)->name('create');
+        Route::get('/{id}/edit', ProductsEdit::class)->name('edit');
     });
+
+    Route::view('404', 'admin.404')->name('not-found');
 });
 Route::view('/ban-page', 'ban')->name('ban')->middleware(['role:ban']);

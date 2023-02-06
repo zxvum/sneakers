@@ -1,198 +1,504 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.css') }}">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta
+        name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template"
+    />
+    <meta
+        name="description"
+        content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
+    />
+    <meta name="robots" content="noindex,nofollow"/>
+    <title>Matrix Admin Lite</title>
+    <!-- Favicon icon -->
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="{{ asset('assets/images/favicon.png') }}"
+    />
+    <!-- Custom CSS -->
+    <link href="{{ asset('assets/libs/flot/css/float-chart.css') }}" rel="stylesheet"/>
+    <!-- Custom CSS -->
+    @yield('css')
+    <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet"/>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     @livewireStyles
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
 
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+<body>
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
     </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div
+    id="main-wrapper"
+    data-layout="vertical"
+    data-navbarbg="skin5"
+    data-sidebartype="full"
+    data-sidebar-position="absolute"
+    data-header-position="absolute"
+    data-boxed-layout="full"
+>
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <a class="navbar-brand" href="#">
+                    <!-- Logo icon -->
+                    <b class="logo-icon ps-2">
+                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                        <!-- Dark Logo icon -->
+                        <img
+                            src="{{ asset('assets/images/logo-icon.png') }}"
+                            alt="homepage"
+                            class="light-logo"
+                            width="25"
+                        />
+                    </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    <span class="logo-text ms-2">
+                <!-- dark Logo text -->
+                <img
+                    src="{{ asset('assets/images/logo-text.png') }}"
+                    alt="homepage"
+                    class="light-logo"
+                />
+              </span>
+                    <!-- Logo icon -->
+                    <!-- <b class="logo-icon"> -->
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
 
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
-        </ul>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Navbar Search -->
-            <li class="nav-item">
-                <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                    <i class="fas fa-search"></i>
+                    <!-- </b> -->
+                    <!--End Logo icon -->
                 </a>
-                <div class="navbar-search-block">
-                    <form class="form-inline">
-                        <div class="input-group input-group-sm">
-                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-navbar" type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a href="{{ route('home') }}" class="brand-link">
-            <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
-        </a>
-
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">{{ auth()->user()->name }}</a>
-                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Toggle which is visible on mobile only -->
+                <!-- ============================================================== -->
+                <a
+                    class="nav-toggler waves-effect waves-light d-block d-md-none"
+                    href="javascript:void(0)"
+                ><i class="ti-menu ti-close"></i
+                    ></a>
             </div>
-
-            <!-- SidebarSearch Form -->
-            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                            <i class="fas fa-search fa-fw"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Товары
-                            </p>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div
+                class="navbar-collapse collapse"
+                id="navbarSupportedContent"
+                data-navbarbg="skin5"
+            >
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav float-start me-auto">
+                    <li class="nav-item d-none d-lg-block">
+                        <a
+                            class="nav-link sidebartoggler waves-effect waves-light"
+                            href="javascript:void(0)"
+                            data-sidebartype="mini-sidebar"
+                        ><i class="mdi mdi-menu font-24"></i
+                            ></a>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- create new -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                  <span class="d-none d-md-block"
+                  >Create New <i class="fa fa-angle-down"></i
+                      ></span>
+                            <span class="d-block d-md-none"
+                            ><i class="fa fa-plus"></i
+                                ></span>
                         </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item search-box">
+                        <a
+                            class="nav-link waves-effect waves-dark"
+                            href="javascript:void(0)"
+                        ><i class="mdi mdi-magnify fs-4"></i
+                            ></a>
+                        <form class="app-search position-absolute">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search &amp; enter"
+                            />
+                            <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
+                        </form>
+                    </li>
+                </ul>
+                <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav float-end">
+                    <!-- ============================================================== -->
+                    <!-- Comment -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <i class="mdi mdi-bell font-24"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- End Comment -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Messages -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle waves-effect waves-dark"
+                            href="#"
+                            id="2"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <i class="font-24 mdi mdi-comment-processing"></i>
+                        </a>
+                        <ul
+                            class="
+                    dropdown-menu dropdown-menu-end
+                    mailbox
+                    animated
+                    bounceInDown
+                  "
+                            aria-labelledby="2"
+                        >
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="">
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                            <span
+                                class="
+                                btn btn-success btn-circle
+                                d-flex
+                                align-items-center
+                                justify-content-center
+                              "
+                            ><i class="mdi mdi-calendar text-white fs-4"></i
+                                ></span>
+                                                <div class="ms-2">
+                                                    <h5 class="mb-0">Event today</h5>
+                                                    <span class="mail-desc"
+                                                    >Just a reminder that event</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                            <span
+                                class="
+                                btn btn-info btn-circle
+                                d-flex
+                                align-items-center
+                                justify-content-center
+                              "
+                            ><i class="mdi mdi-settings fs-4"></i
+                                ></span>
+                                                <div class="ms-2">
+                                                    <h5 class="mb-0">Settings</h5>
+                                                    <span class="mail-desc"
+                                                    >You can customize this template</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                            <span
+                                class="
+                                btn btn-primary btn-circle
+                                d-flex
+                                align-items-center
+                                justify-content-center
+                              "
+                            ><i class="mdi mdi-account fs-4"></i
+                                ></span>
+                                                <div class="ms-2">
+                                                    <h5 class="mb-0">Pavan kumar</h5>
+                                                    <span class="mail-desc"
+                                                    >Just see the my admin!</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                            <span
+                                class="
+                                btn btn-danger btn-circle
+                                d-flex
+                                align-items-center
+                                justify-content-center
+                              "
+                            ><i class="mdi mdi-link fs-4"></i
+                                ></span>
+                                                <div class="ms-2">
+                                                    <h5 class="mb-0">Luanch Admin</h5>
+                                                    <span class="mail-desc"
+                                                    >Just see the my new admin!</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- End Messages -->
+                    <!-- ============================================================== -->
+
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a
+                            class="
+                    nav-link
+                    dropdown-toggle
+                    text-muted
+                    waves-effect waves-dark
+                    pro-pic
+                  "
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <img
+                                src="{{ asset('assets/images/users/1.jpg') }}"
+                                alt="user"
+                                class="rounded-circle"
+                                width="31"
+                            />
+                        </a>
+                        <ul
+                            class="dropdown-menu dropdown-menu-end user-dd animated"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <a class="dropdown-item" href="javascript:void(0)"
+                            ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
+                            >
+                            <a class="dropdown-item" href="javascript:void(0)"
+                            ><i class="mdi mdi-wallet me-1 ms-1"></i> My Balance</a
+                            >
+                            <a class="dropdown-item" href="javascript:void(0)"
+                            ><i class="mdi mdi-email me-1 ms-1"></i> Inbox</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                            ><i class="mdi mdi-settings me-1 ms-1"></i> Account
+                                Setting</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                            ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <div class="ps-4 p-10">
+                                <a
+                                    href="javascript:void(0)"
+                                    class="btn btn-sm btn-success btn-rounded text-white"
+                                >View Profile</a
+                                >
+                            </div>
+                        </ul>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav" class="pt-4">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false"><i class="mdi mdi-account-circle"></i><span
+                                class="hide-menu">Пользователи </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span
+                                        class="hide-menu"> Все пользователи </span></a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span
+                                        class="hide-menu"> Создать нового </span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false"><i class="mdi mdi-shopping"></i><span
+                                class="hide-menu">Товары </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="{{ route('admin.products.table') }}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span
+                                        class="hide-menu"> Все товары </span></a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('admin.products.create') }}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span
+                                        class="hide-menu"> Создать новый товар </span></a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
-            <!-- /.sidebar-menu -->
+            <!-- End Sidebar navigation -->
         </div>
-        <!-- /.sidebar -->
+        <!-- End Sidebar scroll-->
     </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                @yield('content')
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            @yield('content')
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            All Rights Reserved by Matrix-admin. Designed and Developed by
+            <a href="https://www.wrappixel.com">WrapPixel</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.2.0
-        </div>
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
 </div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- ChartJS -->
-<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
-<!-- JQVMap -->
-<script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Summernote -->
-<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
-<script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
-<script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
 
 @livewireScripts
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+<script src="{{ asset('assets/extra-libs/sparkline/sparkline.js') }}"></script>
+<!--Wave Effects -->
+<script src="{{ asset('dist/js/waves.js') }}"></script>
+<!--Menu sidebar -->
+<script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
+<!--Custom JavaScript -->
+<script src="{{ asset('dist/js/custom.min.js') }}"></script>
+<!--This page JavaScript -->
+<!-- <script src="../dist/js/pages/dashboards/dashboard1.js"></script> -->
+<!-- Charts js Files -->
+{{--<script src="{{ asset('assets/libs/flot/excanvas.js') }}"></script>--}}
+<script src="{{ asset('assets/libs/flot/jquery.flot.js') }}"></script>
+{{--<script src="{{ asset('assets/libs/flot/jquery.flot.pie.js') }}"></script>--}}
+{{--<script src="{{ asset('assets/libs/flot/jquery.flot.time.js') }}"></script>--}}
+{{--<script src="{{ asset('assets/libs/flot/jquery.flot.stack.js') }}"></script>--}}
+{{--<script src="{{ asset('assets/libs/flot/jquery.flot.crosshair.js') }}"></script>--}}
+{{--<script src="{{ asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>--}}
+{{--<script src="{{ asset('dist/js/pages/chart/chart-page-init.js') }}"></script>--}}
+@yield('js')
 </body>
 </html>
